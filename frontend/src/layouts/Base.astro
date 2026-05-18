@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const SITE_URL = 'https://pairdevo.com';
+
+const {
+  title = 'pairdevo — Free Real-Time Code Sharing & Collaborative Editor',
+  description = 'Share code in real time for free. No account needed — create a project, paste your code, and share the link instantly. Supports 12+ languages with live collaboration.',
+  canonical = Astro.url.href,
+  ogImage = `${SITE_URL}/og-image.png`,
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="free code sharing, real-time code collaboration, share code online free, collaborative code editor, code snippet sharing, live code editor, free online code editor, share code with link, no login code editor, pairdevo" />
+    <meta name="author" content="pairdevo" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="pairdevo" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="pairdevo — Free real-time collaborative code editor" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="pairdevo — Free real-time collaborative code editor" />
+
+    <!-- Theme & PWA hints -->
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="application-name" content="pairdevo" />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "pairdevo",
+        "url": "https://pairdevo.com",
+        "description": "Free real-time collaborative code editor. Share code online instantly with no account required. Supports 12+ programming languages.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time code collaboration",
+          "12+ programming languages",
+          "No account required",
+          "Share via link",
+          "Free to use",
+          "Auto-expires after 24 hours"
+        ]
+      }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body class="min-h-screen bg-[var(--color-bg-base)] text-[var(--color-text-primary)]">
+    <slot />
+  </body>
+</html>

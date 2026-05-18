@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /project
+
+Sitemap: https://pairdevo.com/sitemap-index.xml

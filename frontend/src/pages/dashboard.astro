@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar';
+import Dashboard from '../components/Dashboard';
+---
+
+<Base title="My Projects — pairdevo" noindex={true}>
+  <Navbar client:load showDashboardLink={false} />
+  <Dashboard client:load />
+</Base>

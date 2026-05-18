@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar';
+import ProjectLoader from '../components/ProjectLoader';
+---
+
+<Base title="Code Editor — pairdevo" noindex={true}>
+  <Navbar client:load />
+  <ProjectLoader client:load />
+</Base>
